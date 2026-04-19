@@ -443,3 +443,26 @@ const amountInput = document.getElementById('amount');
 const currencySelect = document.getElementById('currency');
 const convertBtn = document.getElementById('convertBtn');
 const resultDiv = document.getElementById('result');
+function convertCurrency() {
+    const amount = amountInput.value;
+    const currency = currencySelect.value;
+    
+    if (amount === "") {
+        resultDiv.innerHTML = "Ошибка: введите сумму";
+        resultDiv.classList.add('show', 'error');
+        return;
+    }
+
+    const numAmount = parseFloat(amount);
+    
+    if (isNaN(numAmount)) {
+        resultDiv.innerHTML = "Ошибка: введите корректное число";
+        resultDiv.classList.add('show', 'error');
+        return;
+    }
+    
+    if (numAmount <= 0) {
+        resultDiv.innerHTML = "Ошибка: сумма должна быть больше нуля";
+        resultDiv.classList.add('show', 'error');
+        return;
+    }
