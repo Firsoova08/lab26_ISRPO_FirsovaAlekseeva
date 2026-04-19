@@ -479,4 +479,13 @@ function convertCurrency() {
         JPY: "иен",
         TRY: "лир"
     };
+    resultDiv.innerHTML = `${numAmount} ${currencyNames[currency]} = ${result.toFixed(2)} рублей`;
+    resultDiv.classList.add('show');
+    resultDiv.classList.remove('error');
 }
+convertBtn.addEventListener('click', convertCurrency);
+amountInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        convertCurrency();
+    }
+});

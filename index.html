@@ -7,6 +7,35 @@
     <link rel = "stylesheet" href="style.css" />
 </head>
 <body>
+    <div class="container">
+        <h1>Конвертер валют</h1>
+        <p>Конвертация в рубли (RUB)</p>
+        
+        <div class="converter">
+            <div class="input-group">
+                <label for="amount">Сумма:</label>
+                <input type="number" id="amount" placeholder="Введите сумму">
+            </div>
+            
+            <div class="input-group">
+                <label for="currency">Валюта:</label>
+                <select id="currency">
+                    <option value="USD">Доллар США (USD)</option>
+                    <option value="EUR">Евро (EUR)</option>
+                    <option value="GBP">Фунт стерлингов (GBP)</option>
+                    <option value="CNY">Китайский юань (CNY)</option>
+                    <option value="JPY">Японская иена (JPY)</option>
+                    <option value="TRY">Турецкая лира (TRY)</option>
+                </select>
+            </div>
+            
+            <button id="convertBtn">Конвертировать</button>
+            
+            <div id="result"></div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
  <div class = "container">
   <h1>Lab 24-26 Modern JavaScript</h1>
 <h2>Современный JavaScript</h2>
