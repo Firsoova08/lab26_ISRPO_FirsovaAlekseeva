@@ -179,21 +179,267 @@
 //  .then((result2) => step3(result2))
 //  .then((finalResult) => console.log("Финальный результат:", finalResult))
 //  .catch((error) => console.log("Ошибка в цепочке:", error));
-console.log("Промисы");
-function checkInventory(productName, inStock) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (inStock) {
-                resolve(`Товар "${productName}" есть в наличии!`);
-            } else {
-                reject(`Товара "${productName}" нет на складе!`);
-            }
-        }, 1000);
-    });
-}
-checkInventory("Планшет", true)
-    .then((message) => console.log(message))
-    .catch((error) => console.log(error));
-checkInventory("Ноутбук", false)
-    .then((message) => console.log(message))
-    .catch((error) => console.log(error));
+// console.log("Промисы");
+// function checkInventory(productName, inStock) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if (inStock) {
+//                 resolve(`Товар "${productName}" есть в наличии!`);
+//             } else {
+//                 reject(`Товара "${productName}" нет на складе!`);
+//             }
+//         }, 1000);
+//     });
+// }
+// checkInventory("Планшет", true)
+//     .then((message) => console.log(message))
+//     .catch((error) => console.log(error));
+// checkInventory("Ноутбук", false)
+//     .then((message) => console.log(message))
+//     .catch((error) => console.log(error));
+
+// console.log("Async/Await");
+// async function greet() {
+//     return "Привет!";
+// }
+// greet().then((message) => console.log(message));
+// function getWeather() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve({ temp: 22, condition: "Солнечно" });
+//         }, 1000);
+//     });
+// }
+// async function showWeather() {
+// console.log("Загрузка погоды...");
+// const weather = await getWeather();
+// console.log(`Температура: ${weather.temp}°C, ${weather.condition}`);
+// }
+// showWeather();
+// async function fetchData (shouldFail) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if (shouldFail) {
+//                 reject("Ошибка при загрузке данных");
+//             } else {
+//                 resolve({ data: "Важные данные" });
+//             }
+//         }, 800);
+//     });
+// }
+// async function getData() {
+//     try {
+//         const result=await fetchData (false);
+//         console.log("Успешно:", result.data);
+//         const failedResult = await fetchData(true);
+//         console.log("Это не выполнится");
+//     }
+//     catch (error) {
+//         console.log("Поймана ошибка:", error);
+//     }
+// }
+// getData();
+// async function cookDinner() {
+// console.log("Начинаем готовить...");
+// const pasta=await delay(1000).then(() => "Паста готова");
+// console.log(pasta);
+// const sauce = await delay(500).then(() => "Соус готов");
+// console.log(sauce);
+// const salad = await delay(700).then(() => "Салат готов"); console.log(salad);
+// return "Ужин готов!";
+// }
+// cookDinner().then((result) => console.log(result));
+// async function cookDinnerFast() {
+//     console.log("Готовим всё одновременно...");
+//     const [pasta, sauce, salad]=await Promise.all([
+//         delay(1000).then(() => "Паста готова"),
+//         delay(500).then(() => "Cоус готов"),
+//         delay(700).then(() => "Салат готов"),
+//     ]);
+//     console.log(pasta, sauce, salad);
+//     return "Ужин готов быстрее!";
+// }
+// cookDinnerFast().then((result) => console.log(result));
+// async function processOrder(product, quantity) {
+//     try {
+//         console.log("Проверка наличия...");
+//         const stock = await checkStock(product);
+//         console.log("Товар в наличии");
+
+//         console.log("Расчет стоимости...");
+//         const cost = await calculateCost(product, quantity);
+//         console.log("Стоимость:", cost.total);
+
+//         console.log("Подтверждение заказа...");
+//         const order = await confirmOrder(cost);
+//         console.log("Заказ подтвержден. Номер:", order.orderId);
+//     } catch (error) {
+//         console.log("Ошибка:", error);
+//     }
+// }
+
+// processOrder("iPhone", 2);
+// console.log("Fetch API");
+// async function getUsers() {
+// try {
+
+// const response=await fetch("https://jsonplaceholder.typicode.com/users");
+// if (!response.ok) {
+// throw new Error(`HTTP ошибка! Статус: ${response.status}`);
+// }
+// const users=await response.json();
+// console.log("Первые 3 пользователя:");
+// users.slice(0, 3).forEach((user) => {
+// console.log(`-${user.name} (${user.email})`);
+// });
+// } catch (error) {
+// console.log("Ошибка при загрузке пользователей:", error.message);
+// }
+// }
+// getUsers();
+// async function getUserById(id) {
+//     try {
+//         const response = await fetch('https://jsonplaceholder.typicode.com/users/${id}');
+//         const user = await response.json();
+//         console.log(`Пользователь #${id}:`);
+//         console.log(`Имя: ${user.name}`);
+//         console.log(`Город: ${user.address.city}`);
+//         console.log(`Компания: ${user.company.name}`);
+//     }  catch (error) {
+//         console.log("Ошибка:", error.message);
+//     }
+// }
+// getUserById(1);
+// async function createPost() {
+//     try {
+//         const newPost = {
+//             title: "Моя первая запись",
+//             body: "Это содержание моей первой записи в блоге",
+//             userId: 1,
+//         };
+//         const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+//             method: "POST", 
+//             headers: {
+//                 "Content-Type": "application/json", 
+//             },
+//             body: JSON.stringify(newPost), 
+//         });
+//         const createdPost=await response.json();
+//         console.log("Создана новая запись:");
+//         console.log("ID:", createdPost.id);
+//         console.log("Заголовок:", createdPost.title);
+//     } catch (error) {
+//         console.log("Ошибка при создании записи:", error.message);
+//     }
+// }
+// createPost();
+// console.log("Optional Chaining");
+// const user1 = {
+//     name: "Андрей",
+//     address: {
+//         city: "Волжский",
+//         street: "Пушкина",
+//     },
+// };
+// const user2 = {
+// name: "Дмитрий",
+// // address отсутствует
+// };
+// const city1 = user2.address && user2.address.city;
+// console.log("Город (старый способ):", city1); 
+// const city2 = user2.address?.city;
+// console.log("Город (новый способ):", city2); 
+// const street = user1.address?.street;
+// console.log("Улица:", street); 
+// const admin = {
+//     name: "Администратор",
+//     permissions:
+//     {
+//         canDelete: () => true,
+//     },
+// };
+// const guest = {
+//     name: "Гость",
+// };
+// console.log("Админ может удалять?", admin.permissions?.
+// canDelete?.()); 
+// console.log("Гость может удалять?", guest.permissions?.
+// canDelete?.()); 
+// const company = {
+//     name: "Tech Corp",
+//     employees: [
+//         { name: "Надежда", role: "Developer" },
+//         { name: "Анна", role: "Designer" },
+//     ],
+// };
+// const startup = {
+//     name: "New Startup",
+// };
+// console.log("Первый сотрудник:", сompany.employees?. [0]?.name);
+// console.log("Первый сотрудник стартапа:", startup.
+// employees?.[0]?.name);
+// console.log("Nullish Coalescing");
+// const value1 = 0;
+// const value2 = "";
+// const value3 = false;
+// const value4 = null;
+// const value5 = undefined;
+// console.log('value1 || "default":', value1 || "default");
+// console.log('value2 || "default":', value2 || "default");
+// console.log('value3 || "default":', value3 || "default");
+// console.log('value1 ?? "default":', value1 ?? "default");
+// console.log('value2 ?? "default":', value2 ?? "default");
+// console.log('value3 ?? "default":', value3 ?? "default");
+// console.log('value4 ?? "default":', value4 ?? "default");
+// console.log('value5 ?? "default":', value5 ?? "default");
+// function displayUserSettings(settings) {
+//     const theme=settings?.theme ?? "light";
+//     const fontSize = settings?.fontSize ?? 14;
+//     const notifications = settings?.notifications ?? true;
+//     console.log("Настройки пользователя:");
+//     console.log("Тема:", theme);
+//     console.log("Размер шрифта:", fontSize);
+//     console.log("Уведомления: ", notifications);
+// }
+// displayUserSettings({theme:"dark",fontSize:16});
+// displayUserSettings({notifications:false});
+// displayUserSettings({});
+// const apiResponse={
+//     data:{
+//         user:{
+//             profile:{
+//                 settings:{
+//                     language:"ru",
+//                 },
+//             },
+//         },
+//     },
+// };
+// const language=apiResponse?.data?.user?.profile?.settings?.language??"en";
+// console.log("Язык:",language);
+// const emptyResponse={};
+// const defaultLanguage=emptyResponse?.data?.user?.profile?.settings?.language??"en";
+// console.log("язык по умолчанию:",defaultLanguage);
+// function displayOrder(order) {
+//     const name = order?.customer?.firstName ?? "Не указано";
+//     const city = order?.shipping?.address?.city ?? "Не указан";
+//     const payment = order?.payment?.method ?? "Не указан";
+    
+//     console.log("Клиент:", name);
+//     console.log("Город:", city);
+//     console.log("Оплата:", payment);
+// }
+
+// displayOrder(order);
+const exchangeRates = {
+    USD: 92.50,
+    EUR: 98.20,
+    GBP: 115.30,
+    CNY: 12.80,
+    JPY: 0.60,
+    TRY: 2.85
+};
+const amountInput = document.getElementById('amount');
+const currencySelect = document.getElementById('currency');
+const convertBtn = document.getElementById('convertBtn');
+const resultDiv = document.getElementById('result');
