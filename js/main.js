@@ -466,3 +466,17 @@ function convertCurrency() {
         resultDiv.classList.add('show', 'error');
         return;
     }
+     const rate = exchangeRates[currency];
+    
+
+    const result = numAmount * rate;
+    
+    const currencyNames = {
+        USD: "долларов",
+        EUR: "евро",
+        GBP: "фунтов",
+        CNY: "юаней",
+        JPY: "иен",
+        TRY: "лир"
+    };
+}
